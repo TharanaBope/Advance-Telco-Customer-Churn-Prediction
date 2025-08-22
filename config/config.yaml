@@ -1,0 +1,42 @@
+data:
+  raw_path: "data/raw/WA_Fn-UseC_-Telco-Customer-Churn.csv"
+  processed_path: "data/processed/"
+  artifacts_path: "artifacts/data/"
+  
+  # Intermediate processed files
+  missing_handled: "data/processed/telco_missing_handled.csv"
+  outliers_removed: "data/processed/telco_outliers_removed.csv"
+  binned: "data/processed/telco_binned.csv"
+  encoded: "data/processed/telco_encoded.csv"
+  scaled: "data/processed/telco_scaled.csv"
+  
+preprocessing:
+  missing_strategy: "mean"  # for numerical
+  scaling_method: "standard"
+  encoding_method: "onehot"
+  
+models:
+  random_forest:
+    n_estimators: [100, 200, 300]
+    max_depth: [5, 10, 15, 20]
+    min_samples_split: [2, 5, 10]
+  
+  xgboost:
+    learning_rate: [0.01, 0.1, 0.2]
+    max_depth: [3, 5, 7]
+    n_estimators: [100, 200, 300]
+    
+  catboost:
+    learning_rate: [0.01, 0.1, 0.2]
+    depth: [4, 6, 8]
+    iterations: [100, 200, 300]
+
+evaluation:
+  cv_folds: 5
+  test_size: 0.2
+  random_state: 42
+  scoring: ["precision", "recall", "f1", "roc_auc"]
+
+artifacts:
+  models_path: "artifacts/models/"
+  reports_path: "artifacts/reports/"
