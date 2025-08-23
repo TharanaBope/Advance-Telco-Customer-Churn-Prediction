@@ -289,7 +289,7 @@ class TelcoDataPipeline:
             # Log new columns created
             new_columns = [col for col in df_processed.columns if col not in df.columns]
             if new_columns:
-                self.logger.info(f"🆕 New features created: {new_columns}")
+                self.logger.info(f"New features created: {new_columns}")
             
             # Log file saved
             if os.path.exists(self.data_paths['binned']):
@@ -376,7 +376,7 @@ class TelcoDataPipeline:
             
             numerical_columns = [col for col in numerical_columns if 'id' not in col.lower()]
             
-            self.logger.info(f"🔢 Scaling {len(numerical_columns)} numerical features: {numerical_columns}")
+            self.logger.info(f"Scaling {len(numerical_columns)} numerical features: {numerical_columns}")
             
             # Get scaling configuration
             scaling_config = get_scaling_config()
@@ -446,7 +446,7 @@ class TelcoDataPipeline:
             self.logger.info(f"Data split completed:")
             self.logger.info(f"   Total samples: {len(df):,}")
             self.logger.info(f"   Training set: {len(X_train):,} samples ({len(X_train)/len(df)*100:.1f}%)")
-            self.logger.info(f"   🧪 Test set: {len(X_test):,} samples ({len(X_test)/len(df)*100:.1f}%)")
+            self.logger.info(f"   Test set: {len(X_test):,} samples ({len(X_test)/len(df)*100:.1f}%)")
             self.logger.info(f"   Features: {X_train.shape[1]}")
             
             # Log target distribution in splits
