@@ -11,9 +11,9 @@ data:
   scaled: "data/processed/telco_scaled.csv"
   
 preprocessing:
-  missing_strategy: "mean"  # for numerical
+  missing_strategy: "telco_specific"  # Use Telco domain-specific strategy
   scaling_method: "standard"
-  encoding_method: "onehot"
+  encoding_method: "telco_specific"
   
 models:
   random_forest:
